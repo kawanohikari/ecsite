@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        //商品注文テーブル
+        //商品注文テーブル（中間テーブル）
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->integer('order_id');        //注文番号

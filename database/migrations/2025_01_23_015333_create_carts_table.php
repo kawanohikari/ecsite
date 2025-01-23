@@ -11,12 +11,9 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->integer('');
-            $table->id();
-            $table->id();
-            $table->id();
-            $table->id();
-
+            $table->integer('user_id');         //ユーザーID
+            $table->integer('product_id');      //商品ID
+            $table->integer('quantity');        //数量
             $table->timestamps();
         });
     }
