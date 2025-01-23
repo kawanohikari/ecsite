@@ -6,18 +6,16 @@
 @endsection
 
 @section('header')
-<h1>商品追加</h1>
+<h1>商品編集</h1>
 @endsection
 
 @section('main')
-<form action="/product/edit" method="POST">
-	@csrf
-	<table>
+<table>
+	<form action="/product/edit" method="POST">
+		@csrf
 		<tr>
 			<th>ID</th>
-			<td>
-				<input type="text" name="id" value="{{ $form->id }}" readonly>
-			</td>
+			<td><input type="text" name="id" value="{{ $form->id }}" readonly></td>
 		</tr>
 		@error('name')
 		<tr>
@@ -27,7 +25,7 @@
 		@enderror
 		<tr>
 			<th>品名</th>
-			<td><input type="text" name="name" value="{{ $form->name }}">
+			<td><input type="text" name="name" value="{{ $form->name }}"></td>
 		</tr>
 		@error('description')
 		<tr>
@@ -37,7 +35,7 @@
 		@enderror
 		<tr>
 			<th>説明</th>
-			<td><input type="text" name="description" value="{{ $form->description }}">
+			<td><input type="text" name="description" value="{{ $form->description }}"></td>
 		</tr>
 		@error('price')
 		<tr>
@@ -47,7 +45,7 @@
 		@enderror
 		<tr>
 			<th>売価</th>
-			<td><input type="text" name="price" value="{{ $form->price }}">
+			<td><input type="number" name="price" value="{{ $form->price }}"></td>
 		</tr>
 		@error('cost')
 		<tr>
@@ -57,7 +55,7 @@
 		@enderror
 		<tr>
 			<th>原価</th>
-			<td><input type="text" name="cost" value="{{ $form->cost }}">
+			<td><input type="number" name="cost" value="{{ $form->cost }}"></td>
 		</tr>
 		@error('stock')
 		<tr>
@@ -67,14 +65,21 @@
 		@enderror
 		<tr>
 			<th>在庫数</th>
-			<td><input type="text" name="stock" value="{{ $form->stock }}">
+			<td><input type="number" name="stock" value="{{ $form->stock }}"></td>
 		</tr>
 		<tr>
 			<th></th>
 			<td><input type="submit" value="更新">
 		</tr>
-	</table>
-</form>
+	</form>
+	<form action="/product" method="GET">
+		@csrf
+		<tr>
+			<th></th>
+			<td><input type="submit" value="キャンセル"></td>
+		</tr>
+	</form>
+</table>
 @endsection
 
 @section('footer')

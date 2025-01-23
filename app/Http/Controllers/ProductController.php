@@ -15,8 +15,7 @@ class ProductController extends Controller
 
     public function add(Request $request)
     {
-        $form = new Product();
-        return view('product.add', compact('form'));
+        return view('product.add');
     }
 
     public function create(Request $request)
@@ -44,6 +43,28 @@ class ProductController extends Controller
         if ($form) {
             //該当データがあったらデータを更新
             $form->update($request->except('_token'));
+        }
+        //どちらの場合も一覧画面へ戻る
+        return redirect('/product');
+    }
+
+    public function del(Request $request)
+    {
+        $form = Product::find($request->id);
+        if ($form) {
+            //該当データがあったら削除ビューを表示
+            return view('product.del', compact('form'));
+        }
+        //該当データなしの場合は一覧画面へ戻る
+        return redirect('/product');
+    }
+
+    public function remove(Request $request)
+    {
+        $form = Product::find($request->id);
+        if ($form) {
+            //該当データがあったら削除
+            $form->delete();
         }
         //どちらの場合も一覧画面へ戻る
         return redirect('/product');
