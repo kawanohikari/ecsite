@@ -16,11 +16,11 @@ class Product extends Model
     ];
 
     public static $messages = [
-        'name, required' => '品名は必須入力です。',
-        'price, required' => '売価は必須入力です。',
-        'price, integer' => '売価は数値で入力してください。。',
-        'cost, required' => '原価は必須入力です。',
-        'cost, integer' => '原価は数値で入力してください。。',
-        'stock, integer' => '在庫数は数値で入力してください。',
+        'name.required' => '品名は必須入力です。',
+        'price.required' => '売価は必須入力です。',
+        'price.integer' => '売価は数値で入力してください。',
+        'cost.required' => '原価は必須入力です。',
+        'cost.integer' => '原価は数値で入力してください。',
+        'stock.integer' => '在庫数は数値で入力してください。',
     ];
 }

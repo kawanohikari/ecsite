@@ -17,6 +17,10 @@ td {
     padding: 2px 10px;
 }
 
+.red {
+    color: red;
+}
+
 .right {
     text-align: right;
 }

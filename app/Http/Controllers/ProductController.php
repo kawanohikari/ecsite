@@ -13,34 +13,39 @@ class ProductController extends Controller
         return view('product.index', compact('items'));
     }
 
+    public function add(Request $request)
+    {
+        $form = new Product();
+        return view('product.add', compact('form'));
+    }
+
+    public function create(Request $request)
+    {
+        $request->validate(Product::$rules, Product::$messages);
+        Product::create($request->except('_token'));
+        return redirect('/product');
+    }
+
     public function edit(Request $request)
     {
         $form = Product::find($request->id);
         if ($form) {
-            //該当データがあったら編集ビューを表示する。
-            return view('product.edit',compact('form'));
+            //該当データがあったら編集ビューを表示
+            return view('product.edit', compact('form'));
         }
-        //該当データなしの場合は何もせず復帰する
+        //該当データなしの場合は一覧画面へ戻る
         return redirect('/product');
     }
 
     public function update(Request $request)
     {
-        //$request->validate(Product::$rules, Product::$messages);
+        $request->validate(Product::$rules, Product::$messages);
         $form = Product::find($request->id);
         if ($form) {
-            //該当データがあったらデータを更新する。
-            
-
-
-        $form = Product::find($request->id);
-        if ($form) {
-            //該当データがあったら編集ビューを表示する。
-            return view('product.edit',compact('form'));
+            //該当データがあったらデータを更新
+            $form->update($request->except('_token'));
         }
-        //該当データなしの場合は何もせず復帰する
+        //どちらの場合も一覧画面へ戻る
         return redirect('/product');
     }
-
-
 }

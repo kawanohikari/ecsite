@@ -26,18 +26,18 @@
 		<td class="right">{{ number_format($item->id) }}</td>
 		<td>{{ $item->name }}</td>
 		<td>{{ $item->description }}</td>
-		<td class="right">¥{{ number_format($item->price) }}</td>
-		<td class="right">¥{{ number_format($item->cost) }}</td>
+		<td class="right">￥{{ number_format($item->price) }}</td>
+		<td class="right">＠{{ number_format($item->cost) }}</td>
 		<td class="right">{{ number_format($item->stock) }}</td>
 		<td>
-			<input type="hidden" name="id" value="{{ $item->id }}">
-			<form action="/product/edit" method="POST">
+			<form action="/product/edit" method="GET">
+				<input type="hidden" name="id" value="{{ $item->id }}">
 				<input type="submit" value="編集">
 			</form>
 		</td>
 		<td>
-			<input type="hidden" name="id" value="{{ $item->id }}">
-			<form action="/product/del" method="POST">
+			<form action="/product/del" method="GET">
+				<input type="hidden" name="id" value="{{ $item->id }}">
 				<input type="submit" value="削除">
 			</form>
 		</td>
@@ -46,7 +46,7 @@
 	<tr>
 		<th colspan="6"></th>
 		<td colspan="2">
-			<form action="/product/add" method="POST">
+			<form action="/product/add" method="GET">
 				<input type="submit" value="新規追加" style="width:105px">
 			</form>
 		</td>
