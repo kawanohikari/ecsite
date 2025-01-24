@@ -19,6 +19,7 @@
 
 @section('header')
 <h1>ハンバーガーショップ</h1>
+<img src="{{ asset('img\今だけダブチ食べ美.JPG') }}" style="width: 100%" ;">
 @endsection
 
 @section('main')
@@ -46,8 +47,15 @@
 		</tr>
 		<tr>
 			<td>
-				<form action=" /shop/cartin" method="GET">
+				<form action="/shop/cartin" method="GET">
 					<input type="hidden" name="id" value="{{ $item->id }}">
+					<select name="quantity">
+						<option value="1" selected>1個</option>
+						<option value="2">2個</option>
+						<option value="3">3個</option>
+						<option value="4">4個</option>
+						<option value="5">5個</option>
+					</select>
 					<input type="submit" value="カートに入れる">
 				</form>
 			</td>
