@@ -24,4 +24,9 @@ class Cart extends Model
         'quantity.required' => 'quantityは必須入力です。',
         'quantity.integer' => 'quantityは数値で入力してください。',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class,  'product_id', 'id');
+    }
 }

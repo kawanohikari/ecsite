@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
@@ -20,9 +21,7 @@ Route::get('/product/del', [ProductController::class, 'del']);
 Route::post('/product/del', [ProductController::class, 'remove']);
 
 Route::get('/shop', [ShopController::class, 'index']);
-Route::get('/shop/add', [ShopController::class, 'add']);
-Route::post('/shop/add', [ShopController::class, 'create']);
-Route::get('/shop/edit', [ShopController::class, 'edit']);
-Route::post('/shop/edit', [ShopController::class, 'update']);
-Route::get('/shop/del', [ShopController::class, 'del']);
-Route::post('/shop/del', [ShopController::class, 'remove']);
+Route::get('/shop/cartin', [ShopController::class, 'cartin']);
+
+Route::get('/cart', [CartController::class, 'index']);
+Route::get('/cart/calc', [CartController::class, 'calc']);

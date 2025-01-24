@@ -23,4 +23,9 @@ class Product extends Model
         'cost.integer' => '原価は数値で入力してください。',
         'stock.integer' => '在庫数は数値で入力してください。',
     ];
+
+    public function cart()
+    {
+        return $this->hasMany(Cart::class, 'id', 'product_id');
+    }
 }
