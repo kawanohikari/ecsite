@@ -1,51 +1,59 @@
-@extends('layouts.master')
+@extends('layouts.master2')
 @section('title','shop index')
 @section('stylesheet')
 <style>
+	.wrap {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.box {
+		width: 200px;
+		margin: 10px;
+		border-radius: 15px;
+		box-shadow: 0 0 8px rgba(0, 0, 0, 0.16);
+	}
 </style>
 @endsection
-
 
 @section('header')
 <h1>ハンバーガーショップ</h1>
 @endsection
 
 @section('main')
-<table>
+<table style="margin: 30px 0">
 	<tr>
-		@foreach($items as $item)
 		<td>
-			<img src="{{ asset($item->url) }}">
-		</td>
-		<td class="right">{{ number_format($item->id) }}</td>
-		<td>{{ $item->name }}</td>
-		<td>{{ $item->description }}</td>
-		<td class="right">￥{{ number_format($item->price) }}</td>
-
-		<form action="/product/edit" method="GET">
-			<td>
-				<input type="hidden" name="id" value="{{ $item->id }}">
-				<input type="submit" value="編集">
-
-			</td>
-		</form>
-		<td>
-			<form action="/product/del" method="GET">
-				<input type="hidden" name="id" value="{{ $item->id }}">
-				<input type="submit" value="削除">
-			</form>
-		</td>
-	</tr>
-	@endforeach
-	<tr>
-		<th colspan="6"></th>
-		<td colspan="2">
-			<form action="/product/add" method="GET">
-				<input type="submit" value="新規追加" style="width:105px">
+			<form action="/cart" method="GET">
+				<input type="submit" value="カートの中身を見る">
 			</form>
 		</td>
 	</tr>
 </table>
+<h2>メニュー</h2>
+<div class="wrap">
+	@foreach($items as $item)
+	<table class="box">
+		<tr>
+			<td><img src="{{ asset($item->url) }}"></td>
+		</tr>
+		<tr>
+			<td>{{ $item->name }}</td>
+		</tr>
+		<tr>
+			<td>￥{{ number_format($item->price) }}</td>
+		</tr>
+		<tr>
+			<td>
+				<form action="/shop/cartin" method="GET">
+					<input type="hidden" name="id" value="{{ $item->id }}">
+					<input type="submit" value="カートに入れる">
+				</form>
+			</td>
+		</tr>
+	</table>
+	@endforeach
+</div>
 @endsection
 
 @section('footer')
