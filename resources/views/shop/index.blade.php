@@ -11,6 +11,7 @@
 		width: 200px;
 		margin: 10px;
 		border-radius: 15px;
+		background-color: white;
 		box-shadow: 0 0 8px rgba(0, 0, 0, 0.16);
 	}
 </style>
@@ -35,7 +36,7 @@
 	@foreach($items as $item)
 	<table class="box">
 		<tr>
-			<td><img src="{{ asset($item->url) }}"></td>
+			<td style="text-align: center"><img src="{{ asset($item->image_url) }}" style="width: 110px;"></td>
 		</tr>
 		<tr>
 			<td>{{ $item->name }}</td>
@@ -45,7 +46,7 @@
 		</tr>
 		<tr>
 			<td>
-				<form action="/shop/cartin" method="GET">
+				<form action=" /shop/cartin" method="GET">
 					<input type="hidden" name="id" value="{{ $item->id }}">
 					<input type="submit" value="カートに入れる">
 				</form>
